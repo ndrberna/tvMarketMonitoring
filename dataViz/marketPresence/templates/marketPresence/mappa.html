@@ -69,7 +69,6 @@
 		<!-- DOC: This is desktop version of the horizontal menu. The mobile version is defined(duplicated) sidebar menu below. So the horizontal menu has 2 seperate versions -->
 		<div class="hor-menu hor-menu-light hidden-sm hidden-xs">
 			<ul class="nav navbar-nav">
-				<!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the horizontal opening on mouse hover -->
 				
 
 
@@ -180,11 +179,39 @@
 		<div style="min-height:559px" class="page-content">
 			
 			<h3 class="page-title">
-			Distribuzione televisori su mercato web <small>nov 2017</small>
+			Distribuzione televisori su mercato web <small></small>
 			</h3>
+			<h4> Negozi analizzati:
+				<ul>
+			{% for i in negozi %}
+			  <li><a href="/?shop={{ i }}  ">{{ i }}  </a></li>
+			{% endfor %}
+		</ul>
+			</h4>
+		<h4> Risultati:<h4>
+		
+		
 
-
-			
+		<table >
+		<tr>
+		<th>date</th>
+		
+		<th>shop</th>
+		
+		<th>keyword</th>
+		<th>number</th>
+		</tr>
+		{% for i in raw_data %}
+			<tr>	  
+			  
+			  <td>{{ i.1|date:"M d, Y"}}</td>
+			  <td>{{ i.4}}</td>
+			  <td>{{ i.2}}</td>
+			  <td>{{ i.3}} </td>
+			</tr>
+		{% endfor %}
+		</table>
+		<!-- 	
 <div class="row">
 
 
@@ -211,7 +238,7 @@
 						</div>
 							</div>
 							
-						</div>
+						</div>-->
 
 		</div>
 
