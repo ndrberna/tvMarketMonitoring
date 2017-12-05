@@ -31,18 +31,23 @@ def mappa(request):
 	today = datetime.date.today()
 	shop = request.GET.get('shop', None)
 	keyword= request.GET.get('keyword', None)
-
+	date= request.GET.get('date', None)
 	print shop, today,keyword
-	print data.keyword.unique().tolist()
-	print data.shop.unique().tolist()
 	
+	raw_data=data.values.tolist()
 
 	print "RES",data[(data["keyword"]==keyword)]
+
+	if date:
+		raw_data=data[(data["date"]==date)].values.tolist()
+
 	if shop and keyword:
-		#print "*****"
-		#print keyword
-		#print data[data["keyword"]==keyword]
+		print "*****"
+		print keyword
+		print shop
+		
 		raw_data=data[(data["shop"]==shop)&(data["keyword"]==keyword)].values.tolist()
+		print raw_data
 
 	if shop and not keyword:
 		raw_data=data[(data["shop"]==shop)].values.tolist()
@@ -51,16 +56,16 @@ def mappa(request):
 		raw_data=data[(data["keyword"]==keyword)].values.tolist()
 		
 	
+	new_date=[]
+	for j in data.date.unique():
+		new_date.append(str(j).split("T")[0])
 
-	if keyword :
-		raw_data=data[(data["keyword"]==keyword)].values.tolist()
 
-
-	#print raw_data
-
+	print new_date	
 	context = {
 	'raw_data':raw_data,
-	
+	'keyword':data.keyword.unique(),
+	'date':new_date,
 	'negozi':data.shop.unique(),
 	}
 	return render_to_response('marketPresence/mappa.html',context)

@@ -13,7 +13,7 @@
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 <meta content="" name="description">
 <meta content="" name="author">
-<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
 
 <link href="{% static "css/css.css"%}" rel="stylesheet" type="text/css">
 <link href="{% static "css/font-awesome.css"%}" rel="stylesheet" type="text/css">
@@ -21,179 +21,85 @@
 <link href="{% static "css/bootstrap.css"%}"  rel="stylesheet" type="text/css">
 <link href="{% static "css/uniform.css"%}"   rel="stylesheet" type="text/css">
 <link href="{% static "css/bootstrap-switch.css"%}"  rel="stylesheet" type="text/css">
-<!-- END GLOBAL MANDATORY STYLES -->
-<!-- BEGIN THEME STYLES -->
+
 <link href="{% static "css/components_2.css"%}"  id="style_components" rel="stylesheet" type="text/css">
 <link href="{% static "css/plugins.css"%}"   rel="stylesheet" type="text/css">
 <link href="{% static "css/layout.css"%}"   rel="stylesheet" type="text/css">
 <link id="style_color" href="{% static "css/darkblue.css"%}"  rel="stylesheet" type="text/css">
 <link  href="{% static "css/custom.css"%}"  rel="stylesheet" type="text/css">
-<!-- Core JS files -->
-	<!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>-->
+
 	<script type="text/javascript" src="{% static "js/plotly-latest.min.js"%}"></script>
-	<!-- <script type="text/javascript" src="{% static "js/jets.js"%}"></script>
-	<script type="text/javascript" src="{% static "js/pace.js"%}"></script> -->
+
 	<script type="text/javascript" src="{% static "js/jquery.js"%}"></script>
 	<script type="text/javascript" src="{% static "js/bootstrap.js"%}"></script>
 	<script type="text/javascript" src="{% static "js/blockui.js"%}"></script>
-		<script type="text/javascript" src="{% static "js/echart.js"%}"></script>
-	<!--<script type="text/javascript" src="{% static "js/datatables.min.js"%}"></script>
-	<script type="text/javascript" src="{% static "js/datatables_advanced.js"%}"></script>-->
-	<script type="text/javascript" src="{% static "js/select2.js"%}"></script>
-<!-- END THEME STYLES -->
-<link rel="shortcut icon" href="file:///Users/bordoni/Desktop/Incidenti%20stradali/theme/templates/admin/favicon.ico">
-<script>try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}</script></head>
-<!-- END HEAD -->
-<!-- BEGIN BODY -->
-<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
-<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
-<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
-<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
-<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
-<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
-<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
-<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
-<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body class="page-header-fixed page-quick-sidebar-over-content page-full-width">
-<!-- BEGIN HEADER -->
-<div class="page-header -i navbar navbar-fixed-top">
-	<!-- BEGIN HEADER INNER -->
-	<div class="page-header-inner">
-		<!-- BEGIN LOGO -->
-		<div class="page-logo">
-			
-		</div>
-		<!-- END LOGO -->
-		<!-- BEGIN HORIZANTAL MENU -->
-		<!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
-		<!-- DOC: This is desktop version of the horizontal menu. The mobile version is defined(duplicated) sidebar menu below. So the horizontal menu has 2 seperate versions -->
-		<div class="hor-menu hor-menu-light hidden-sm hidden-xs">
-			<ul class="nav navbar-nav">
-				
 
-
-				<li class="classic-menu-dropdown ">
-					<a href="/">
-					Statistiche generali
-					</a>
-				</li>
-			
-			
-				
-
-		</div>
-		<!-- END HORIZANTAL MENU -->
-		<!-- BEGIN HEADER SEARCH BOX -->
-		<!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
 	
-		<!-- END HEADER SEARCH BOX -->
-		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
-		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-		</a>
-		<!-- END RESPONSIVE MENU TOGGLER -->
-		<!-- BEGIN TOP NAVIGATION MENU -->
-		<div class="top-menu">
-			<ul class="nav navbar-nav pull-right">
-			<li class="dropdown dropdown-user">
-					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" class="img-circle" >
-					<span class="username username-hide-on-mobile">
-					Admin</span>
-					<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="dropdown-menu dropdown-menu-default">
-						<li>
-							<a href="file:///Users/bordoni/Desktop/Incidenti%20stradali/theme/templates/admin/extra_profile.html">
-							<i class="icon-user"></i> My Profile </a>
-						</li>
-						
-						<li class="divider">
-						</li>
-						
-						<li>
-							<a href="file:///Users/bordoni/Desktop/Incidenti%20stradali/theme/templates/admin/login.html">
-							<i class="icon-key"></i> Log Out </a>
-						</li>
-					</ul>
-				</li>
-				<!-- END USER LOGIN DROPDOWN -->
-				<!-- BEGIN QUICK SIDEBAR TOGGLER -->
-				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-				<li class="dropdown dropdown-quick-sidebar-toggler">
-					<a href="javascript:;" class="dropdown-toggle">
-					<i class="icon-logout"></i>
-					</a>
-				</li>
-				<!-- END QUICK SIDEBAR TOGGLER -->
-			</ul>
-		</div>
-		<!-- END TOP NAVIGATION MENU -->
-	</div>
-	<!-- END HEADER INNER -->
-</div>
-<!-- END HEADER -->
-<div class="clearfix">
-</div>
+	<script type="text/javascript" src="{% static "js/select2.js"%}"></script>
+
+</head>
+
+<body class="page-full-width">
+
+
+
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
 	<!-- BEGIN SIDEBAR -->
-	<div class="page-sidebar-wrapper">
-		<!-- BEGIN HORIZONTAL RESPONSIVE MENU -->
-		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-		<div style="" class="page-sidebar navbar-collapse collapse">
-			<ul class="page-sidebar-menu" data-slide-speed="200" data-auto-scroll="true">
-				<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-				<!-- DOC: This is mobile version of the horizontal menu. The desktop version is defined(duplicated) in the header above -->
-				<li class="sidebar-search-wrapper">
-					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-					<!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
-					<!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
-					<!--<form class="sidebar-search sidebar-search-bordered" action="extra_search.html" method="POST">
-						<a href="javascript:;" class="remove">
-						<i class="icon-close"></i>
-						</a>
-						<div class="input-group">
-							<input class="form-control" placeholder="Search..." type="text">
-							<span class="input-group-btn">
-							<button class="btn submit"><i class="icon-magnifier"></i></button>
-							</span>
-						</div>
-					</form>-->
-					<!-- END RESPONSIVE QUICK SEARCH FORM -->
-				</li>
-				<li class="active">
-					<a href="file:///Users/bordoni/Desktop/Incidenti%20stradali/theme/templates/admin/index.html">
-					Dashboard <span class="selected">
-					</span>
-					</a>
-				</li>
-		 
-			</ul>
-		</div>
-		<!-- END HORIZONTAL RESPONSIVE MENU -->
-	</div>
+	
 	<!-- END SIDEBAR -->
 	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
-		<div style="min-height:559px" class="page-content">
+		<div  class="page-content">
 			
-			<h3 class="page-title">
-			Distribuzione televisori su mercato web <small></small>
-			</h3>
-			<h4> Negozi analizzati:
+			<h2 class="page-title">
+			Monitoraggio vendita televisori nel mercato web italiano
+			</h2>
+			<hr>
+			<h3>Ricerca per</h3>
+
+			<table>
+				<tr>
+					<td style="vertical-align: top;padding-right: 22px;">
+						<p style="font-weight:bold;padding-left:25px;">Negozio</p>
+			
 				<ul>
 			{% for i in negozi %}
-			  <li><a href="/?shop={{ i }}  ">{{ i }}  </a></li>
+			  <li style="font-size: 14px;"><a href="/?shop={{ i }}  ">{{ i }}  </a></li>
 			{% endfor %}
-		</ul>
+			</ul>
+			</td>
+			<td style="vertical-align: top;">
+				<p style="font-weight:bold;padding-left:25px;">Marchio</p>
+				<ul>
+				{% for i in keyword %}
+			  <li style="font-size: 14px;"><a href="/?keyword={{ i }}  ">{{ i }}  </a></li>
+			{% endfor %}
+			</ul>
+			</td>
+			<td style="vertical-align: top;padding-right: 22px;">
+						<p style="font-weight:bold;padding-left:25px;">Data</p>
+			
+				<ul>
+			{% for i in date %}
+			  <li style="font-size: 14px;"><a href="/?date={{ i }}  ">{{ i }}  </a></li>
+			{% endfor %}
+			</ul>
+			</td>
+			</tr>
 			</h4>
-		<h4> Risultati:<h4>
+		</table>
 		
 		
-
-		<table >
-		<tr>
+			<h3> Risultati:</h3>
+		<table style="border: 1px solid black;">
+		<tr style="padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2b3643;
+    color:white;
+    border: 1px solid #white;
+    ">
 		<th>date</th>
 		
 		<th>shop</th>
@@ -204,78 +110,28 @@
 		{% for i in raw_data %}
 			<tr>	  
 			  
-			  <td>{{ i.1|date:"M d, Y"}}</td>
-			  <td>{{ i.4}}</td>
-			  <td>{{ i.2}}</td>
-			  <td>{{ i.3}} </td>
+			  <td style="border: 1px solid #ddd;padding: 8px;">{{ i.1|date:"M d, Y"}}</td>
+			  <td style="border: 1px solid #ddd;padding: 8px;">{{ i.4}}</td>
+			  <td style="border: 1px solid #ddd;padding: 8px;">{{ i.2}}</td>
+			  <td style="border: 1px solid #ddd;padding: 8px;">{{ i.3}} </td>
 			</tr>
 		{% endfor %}
 		</table>
-		<!-- 	
-<div class="row">
 
-
-
-
-			<div class="portlet light ">
-						<div class="portlet-title">
-								<div class="caption">
-								<i class="icon-bar-chart font-green-sharp hide"></i>
-								<span class="caption-subject font-green-sharp bold uppercase">SUBITO.IT</span>
-								<div class="caption-helper">Analisi effettuata con motore di ricerca del portale</div>
-							</div>
-							
-						</div>
-						<div class="portlet-body">
-							<div style="display: none;" id="">
-								
-							</div>
-							
-				
-
-
-
-						</div>
-							</div>
-							
-						</div>-->
 
 		</div>
 
 
-					<p>
-						
-					</p>
+					
 				</div>
-			</div>
+			</div></div>
 
-
-
-
-
-
-
+	
+	
 	</div>
-	<!-- END CONTENT -->
-	<!-- BEGIN QUICK SIDEBAR -->
-	<a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
 
-	</div>
-	<!-- END QUICK SIDEBAR -->
-</div>
-<!-- END CONTAINER -->
-<!-- BEGIN FOOTER -->
-<div class="page-footer">
-	<div class="page-footer-inner">
-		 2017 
-	</div>
-	<div class="scroll-to-top">
-		<i class="icon-arrow-up"></i>
-	</div>
 </div>
 
 
 
-
-
-</body><!-- END BODY --></html>
+</body></html>
