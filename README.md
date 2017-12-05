@@ -8,5 +8,12 @@ mongod
 python dailymonitoring.py
 
 ## Visualize
-
 python manage.py runserver
+
+## Data Manipulation
+jupyter notebook
+tvMarketMonitoring.ipynb
+
+![alt text](https://github.com/ndrberna/tvMarketMonitoring/blob/master/1.png)
+
+
