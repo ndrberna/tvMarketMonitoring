@@ -14,7 +14,7 @@ python manage.py runserver
 jupyter notebook
 tvMarketMonitoring.ipynb
 
-![](https://github.com/ndrberna/tvMarketMonitoring/blob/master/dataViz/screeshot.png)
+![](https://github.com/ndrberna/tvMarketMonitoring/blob/master/dataViz/frontend.png)
 
 
 
