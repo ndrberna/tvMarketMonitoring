@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.utils.safestring import mark_safe
 from django.shortcuts import render
 import csv
 from django.shortcuts import render_to_response, render, redirect
@@ -14,6 +14,7 @@ import math
 import datetime
 import time
 import pymongo
+
 from pymongo import MongoClient
 client = MongoClient()
 db = client.MonitoraggioTV
@@ -55,23 +56,89 @@ def mappa(request):
 	if not shop and keyword:
 		raw_data=data[(data["keyword"]==keyword)].values.tolist()
 		
-	
+	lista_giorno_dvb_t=[]
 	new_date=[]
 	for j in data.date.unique():
-		new_date.append(str(j).split("T")[0])
+			new_date.append(str(j).split("T")[0])
+			ts = pd.to_datetime(str(j)) 
+			d = ts.strftime('%Y/%m/%d')
+			lista_giorno_dvb_t.append(d.encode('ascii'))
+	if shop:
+
+		lista_negozio_dvb_t=[]
+		lista_keyword_dvb_t=[]
+		lista_number_dvb_t=[]
+
+		lista_negozio_dvb_t2=[]
+		lista_keyword_dvb_t2=[]
+		lista_number_dvb_t2=[]
+
+		lista_negozio_dvb_t2_hevc=[]
+		lista_keyword_dvb_t2_hevc=[]
+		lista_number_dvb_t2_hevc=[]
+
+		lista_negozio_hevc=[]
+		lista_keyword_hevc=[]
+		lista_number_hevc=[]
+		
+		for i in raw_data:
+			if (i[2]=="DVB-T"):	
+				lista_keyword_dvb_t.append(i[2])
+				lista_number_dvb_t.append(i[3])
+				lista_negozio_dvb_t.append(i[4])
+			if (i[2]=="DVB-T2"):	
+				lista_keyword_dvb_t2.append(i[2])
+				lista_number_dvb_t2.append(i[3])
+				lista_negozio_dvb_t2.append(i[4])
+			if (i[2]=="HEVC"):	
+				lista_keyword_hevc.append(i[2])
+				lista_number_hevc.append(i[3])
+				lista_negozio_hevc.append(i[4])
+			if (i[2]=="DVB-T2 HEVC"):	
+				lista_keyword_dvb_t2_hevc.append(i[2])
+				lista_number_dvb_t2_hevc.append(i[3])
+				lista_negozio_dvb_t2_hevc.append(i[4])
+			
+		print lista_giorno_dvb_t,lista_number_dvb_t
+
+		context = {
+		'raw_data':raw_data,
+		'keyword':data.keyword.unique(),
+		'date':new_date,
+		'negozi':data.shop.unique(),
+
+		'lista_negozio_dvb_t':lista_negozio_dvb_t,
+		'lista_number_dvb_t':lista_number_dvb_t,
+		'lista_keyword_dvb_t':lista_keyword_dvb_t,
+		'lista_giorno_dvb_t':mark_safe(lista_giorno_dvb_t),
+
+		'lista_negozio_dvb_t2':lista_negozio_dvb_t2,
+		'lista_number_dvb_t2':lista_number_dvb_t2,
+		'lista_keyword_dvb_t2':lista_keyword_dvb_t2,
+		
+		'lista_negozio_dvb_t2_hevc':lista_negozio_dvb_t2_hevc,
+		'lista_number_dvb_t2_hevc':lista_number_dvb_t2_hevc,
+		'lista_keyword_dvb_t2_hevc':lista_keyword_dvb_t2_hevc,
+
+		'lista_negozio_hevc':lista_negozio_hevc,
+		'lista_number_hevc':lista_number_hevc,
+		'lista_keyword_hevc':lista_keyword_hevc,
+		
+
+		}
+		return render_to_response('marketPresence/mappa.html',context)
 
 
-	print new_date	
 	context = {
-	'raw_data':raw_data,
-	'keyword':data.keyword.unique(),
-	'date':new_date,
-	'negozi':data.shop.unique(),
-	}
+		'raw_data':raw_data,
+		'keyword':data.keyword.unique(),
+		'date':new_date,
+		'negozi':data.shop.unique(),
+
+		
+
+		}
 	return render_to_response('marketPresence/mappa.html',context)
-
-
-
 
 
 
