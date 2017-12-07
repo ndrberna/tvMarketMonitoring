@@ -14,7 +14,7 @@ python manage.py runserver
 jupyter notebook
 tvMarketMonitoring.ipynb
 
-![](https://github.com/ndrberna/tvMarketMonitoring/blob/master/dataViz/Schermata 2017-12-07 alle 11.26.03.png)
+![](https://github.com/ndrberna/tvMarketMonitoring/blob/master/dataViz/schermata.png)
 
 
 
