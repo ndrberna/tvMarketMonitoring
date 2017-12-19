@@ -34,10 +34,14 @@ def mappa(request):
 	keyword= request.GET.get('keyword', None)
 	date= request.GET.get('date', None)
 	print shop, today,keyword
-	
+	chiave_data=request.GET.get('date', None)
 	raw_data=data.values.tolist()
 
 	print "RES",data[(data["keyword"]==keyword)]
+
+	lista_giorno_dvb_t=[]
+	new_date=[]
+	dataviz=0
 
 	if date:
 		raw_data=data[(data["date"]==date)].values.tolist()
@@ -56,15 +60,15 @@ def mappa(request):
 	if not shop and keyword:
 		raw_data=data[(data["keyword"]==keyword)].values.tolist()
 		
-	lista_giorno_dvb_t=[]
-	new_date=[]
+	
 	for j in data.date.unique():
 			new_date.append(str(j).split("T")[0])
 			ts = pd.to_datetime(str(j)) 
 			d = ts.strftime('%Y/%m/%d')
 			lista_giorno_dvb_t.append(d.encode('ascii'))
-	if shop:
 
+	if shop:
+		dataviz=1
 		lista_negozio_dvb_t=[]
 		lista_keyword_dvb_t=[]
 		lista_number_dvb_t=[]
@@ -80,7 +84,14 @@ def mappa(request):
 		lista_negozio_hevc=[]
 		lista_keyword_hevc=[]
 		lista_number_hevc=[]
-		
+		lista_giorno_dvb_t=[]
+		new_date=[]
+		for j in data[(data["shop"]==shop)].date.unique():
+			new_date.append(str(j).split("T")[0])
+			ts = pd.to_datetime(str(j)) 
+			d = ts.strftime('%Y/%m/%d')
+			lista_giorno_dvb_t.append(d.encode('ascii'))
+
 		for i in raw_data:
 			if (i[2]=="DVB-T"):	
 				lista_keyword_dvb_t.append(i[2])
@@ -103,10 +114,11 @@ def mappa(request):
 
 		context = {
 		'raw_data':raw_data,
-		'keyword':data.keyword.unique(),
+		'keywords':data.keyword.unique(),
 		'date':new_date,
 		'negozi':data.shop.unique(),
-
+		'shop':shop,
+		'keyword':keyword,
 		'lista_negozio_dvb_t':lista_negozio_dvb_t,
 		'lista_number_dvb_t':lista_number_dvb_t,
 		'lista_keyword_dvb_t':lista_keyword_dvb_t,
@@ -123,19 +135,22 @@ def mappa(request):
 		'lista_negozio_hevc':lista_negozio_hevc,
 		'lista_number_hevc':lista_number_hevc,
 		'lista_keyword_hevc':lista_keyword_hevc,
-		
-
+		'dataviz':dataviz,
+		'chiave_data':chiave_data
 		}
 		return render_to_response('marketPresence/mappa.html',context)
 
 
 	context = {
 		'raw_data':raw_data,
-		'keyword':data.keyword.unique(),
+		
 		'date':new_date,
 		'negozi':data.shop.unique(),
-
-		
+		'dataviz':dataviz,
+		'keywords':data.keyword.unique(),
+		'shop':shop,
+		'keyword':keyword,
+		'chiave_data':chiave_data
 
 		}
 	return render_to_response('marketPresence/mappa.html',context)

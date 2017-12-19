@@ -53,49 +53,28 @@
 		
 		<div  class="page-content">
 			
-			<h2 class="page-title">
-			Monitoraggio vendita televisori nel mercato web italiano
-			</h2>
+			<h1 class="page-title">
+			Monitoraggio vendita televisori 
+			</h1>
+			<h4> Chiave di ricerca:<b>
+				{% if keyword %}
+					{{ keyword }}
+				{% endif %}
+				{% if shop %}
+					{{ shop}}
+				{% endif %}
+				{% if chiave_data %}
+					{{ chiave_data}}
+				{% endif %}
+			</b></h4>
 			<hr>
 
 			
-			<h3>Ricerca per</h3>
-
-			<table>
-				<tr>
-					<td style="vertical-align: top;padding-right: 22px;">
-						<p style="font-weight:bold;padding-left:25px;">Negozio</p>
 			
-				<ul>
-			{% for i in negozi %}
-			  <li style="font-size: 14px;"><a href="/?shop={{ i }}  ">{{ i }}  </a></li>
-			{% endfor %}
-			</ul>
-			</td>
-			<td style="vertical-align: top;">
-				<p style="font-weight:bold;padding-left:25px;">Marchio</p>
-				<ul>
-				{% for i in keyword %}
-			  <li style="font-size: 14px;"><a href="/?keyword={{ i }}  ">{{ i }}  </a></li>
-			{% endfor %}
-			</ul>
-			</td>
-			<td style="vertical-align: top;padding-right: 22px;">
-						<p style="font-weight:bold;padding-left:25px;">Data</p>
-			
-				<ul>
-			{% for i in date %}
-			  <li style="font-size: 14px;"><a href="/?date={{ i }}  ">{{ i }}  </a></li>
-			{% endfor %}
-			</ul>
-			</td>
-			</tr>
-			</h4>
-		</table>
 			<div class="row">
-			<div class="col-lg-4">
+			<div class="col-lg-3">
 		
-			<h3> Risultati:</h3>
+			
 		<table style="border: 1px solid black;">
 		<tr style="padding-top: 12px;
 		    padding-bottom: 12px;
@@ -124,20 +103,54 @@
 
 
 		</div>
-				<div class="col-lg-3">
+				<div class="col-lg-4">
+					<h3>Categorie</h3>
 
-					<h3> Dataviz:</h3>
+			<table>
+				<tr>
+					<td style="vertical-align: top;padding-right: 22px;">
+						<p style="font-weight:bold;padding-left:25px;">Negozio</p>
+			
+				<ul>
+			{% for i in negozi %}
+			  <li style="font-size: 14px;"><a href="/?shop={{ i }}  ">{{ i }}  </a></li>
+			{% endfor %}
+			</ul>
+			</td>
+			<td style="vertical-align: top;">
+				<p style="font-weight:bold;padding-left:25px;">Parola chiave</p>
+				<ul>
+				{% for i in keywords %}
+			  <li style="font-size: 14px;"><a href="/?keyword={{ i }}  ">{{ i }}  </a></li>
+			{% endfor %}
+			</ul>
+			</td>
+			<td style="vertical-align: top;padding-right: 22px;">
+						<p style="font-weight:bold;padding-left:25px;">Data</p>
+			
+				<ul>
+			{% for i in date %}
+			  <li style="font-size: 14px;"><a href="/?date={{ i }}  ">{{ i }}  </a></li>
+			{% endfor %}
+			</ul>
+			</td>
+			</tr>
+			</h4>
+		</table>
+
+					{% if dataviz %}
+					
 
 
-					<div width="100%" id="myDiv">  </div>
-				
+					<div  id="myDiv">  </div>
+					{% endif %}
 				</div>
 		</div>
 
 			</div>
 
 
-			{{lista_giorno_dvb_t}}
+			
 
 
 			</div>
@@ -186,7 +199,7 @@ var hevc = {
 
 var data = [dvb_t,dvb_t2,hevc,dvb_t2_hevc];
 
-var layout = {barmode: 'stack'};
+var layout = {barmode: 'stack',};
 
 Plotly.newPlot('myDiv', data, layout);
 </script>
