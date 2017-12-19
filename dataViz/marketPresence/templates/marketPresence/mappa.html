@@ -54,7 +54,7 @@
 		<div  class="page-content">
 			
 			<h1 class="page-title">
-			Monitoraggio vendita televisori 
+			Monitoraggio televisori su portali B2C - C2C 
 			</h1>
 			<h4> Chiave di ricerca:<b>
 				{% if keyword %}
@@ -90,7 +90,7 @@
 		<th>keyword</th>
 		<th>number</th>
 		</tr>
-		{% for i in raw_data %}
+		{% for i in raw_data|dictsortreversed:0  %}
 			<tr>	  
 			  
 			  <td style="border: 1px solid #ddd;padding: 8px;">{{ i.1|date:"M d, Y"}}</td>
